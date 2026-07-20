@@ -24,13 +24,17 @@ export default function Register() {
 
       navigate("/dashboard");
 
-    } catch {
+    } catch (error) {
 
-      alert("Registration Failed");
+  console.log(error);
 
-    }
+  alert(
+    error.response?.data?.message ||
+    error.message ||
+    "Registration Failed"
+  );
 
-  }
+}
 
   return (
 
@@ -92,5 +96,3 @@ export default function Register() {
     </div>
 
   );
-
-}
