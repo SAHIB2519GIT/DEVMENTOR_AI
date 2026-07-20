@@ -1,16 +1,6 @@
 import express from "express";
 import cors from "cors";
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://devmentor-ai-three.vercel.app",
-    ],
-    credentials: true,
-  })
-);
-
 import authRoutes from "./routes/authRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
 import interviewRoutes from "./routes/interviewRoutes.js";
@@ -21,11 +11,12 @@ import errorMiddleware from "./middleware/errorMiddleware.js";
 
 const app = express();
 
+// CORS Configuration
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://devmentor-ai-three.vercel.app/",
+      "https://devmentor-ai-three.vercel.app",
     ],
     credentials: true,
   })
