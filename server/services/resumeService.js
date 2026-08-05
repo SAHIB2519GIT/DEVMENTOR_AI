@@ -25,14 +25,22 @@ async function extractText(filePath) {
   return text;
 }
 
-export const uploadResume = async (file, userId) => {
+export const uploadResume = async (
+  file,
+  userId,
+  targetRole = "",
+  jobDescription = ""
+) => {
   if (!file) {
     throw new Error("Resume file is required.");
   }
 
   const extractedText = await extractText(file.path);
 
-  const ai = await analyzeResume(extractedText);
+  const ai = await analyzeResume(
+    extractedText,
+    jobDescription
+  );
 
   const resume = await Resume.create({
     user: userId,
@@ -47,15 +55,29 @@ export const uploadResume = async (file, userId) => {
 
     extractedText,
 
-    atsScore: ai.atsScore,
+    atsScore: ai.atsScore || 0,
 
-    strengths: ai.strengths,
+    readinessScore: ai.readinessScore || 0,
 
-    weaknesses: ai.weaknesses,
+    strengths: ai.strengths || [],
 
-    missingSkills: ai.missingSkills,
+    weaknesses: ai.weaknesses || [],
 
-    suggestions: ai.suggestions,
+    matchedSkills: ai.matchedSkills || [],
+
+    missingSkills: ai.missingSkills || [],
+
+    skillGaps: ai.skillGaps || [],
+
+    evidence: ai.evidence || [],
+
+    suggestions: ai.suggestions || [],
+
+    priorityActions: ai.priorityActions || [],
+
+    targetRole,
+
+    jobDescription,
   });
 
   return resume;
