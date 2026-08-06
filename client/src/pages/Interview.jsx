@@ -52,20 +52,20 @@ export default function Interview() {
           value={role}
           onChange={(e) => setRole(e.target.value)}
           placeholder="Frontend Developer"
-          className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none"
+          className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none caret-white"
         />
 
         <input
           value={skills}
           onChange={(e) => setSkills(e.target.value)}
           placeholder="React, Node.js, MongoDB"
-          className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none"
+          className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none caret-white"
         />
 
         <button
           onClick={handleGenerate}
           disabled={loading}
-          className="rounded-xl bg-violet-600 hover:bg-violet-700 px-8 py-4 font-bold disabled:opacity-50"
+          className="rounded-xl bg-violet-600 hover:bg-violet-700 px-8 py-4 font-bold disabled:opacity-50 caret-violet-600"
         >
           {loading ? "Generating..." : "Generate Questions"}
         </button>
@@ -80,7 +80,7 @@ export default function Interview() {
 
             <div
               key={index}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 caret-white"
             >
 
               <h2 className="font-semibold text-lg">

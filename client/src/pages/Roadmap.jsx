@@ -16,24 +16,30 @@ export default function Roadmap() {
 
   const [roadmap, setRoadmap] = useState([]);
 
-  async function handleGenerate() {
+async function handleGenerate() {
 
-    if (!role) {
-      alert("Please enter your target role.");
-      return;
-    }
+  alert("Button Clicked");
+
+  if (!role) {
+    alert("Please enter your target role.");
+    return;
+  }
+
 
     try {
 
       setLoading(true);
 
       const data = await generateRoadmap({
-        role,
-        experience: "Beginner",
-      });
+  role,
+  experience: "Beginner",
+});
 
-      setRoadmap(data.roadmap.steps || []);
+console.log(data);
+console.log(data.roadmap);
+console.log(data.roadmap.roadmap);
 
+setRoadmap(data.roadmap.roadmap || []);
     } catch (err) {
 
       console.log(err);
@@ -47,7 +53,7 @@ export default function Roadmap() {
     }
 
   }
-
+console.log(roadmap);
   return (
 
     <div className="min-h-screen bg-[#09090b] text-white p-10">
