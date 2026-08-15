@@ -1,14 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   FileText,
- Brain,
+  Brain,
   Route,
- User,
- Settings,
- LogOut,
- GraduationCap,
+  User,
+  Settings,
+  LogOut,
+  GraduationCap,
 } from "lucide-react";
+
+import { useAuth } from "../../context/AuthContext";
 
 const menu = [
   {
@@ -49,29 +51,32 @@ const menu = [
 ];
 
 export default function Sidebar() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
+
   return (
     <aside className="w-72 min-h-screen sticky top-0 bg-[#0b1120] border-r border-white/10 flex flex-col">
 
       {/* Logo */}
-
       <div className="h-24 flex items-center px-8 border-b border-white/10">
-
         <h1 className="text-3xl font-black gradient-text">
           DevMentor AI
         </h1>
-
       </div>
 
       {/* Navigation */}
-
       <div className="flex-1 p-5">
-
-        {menu.map((item, index) => {
+        {menu.map((item) => {
           const Icon = item.icon;
 
           return (
             <NavLink
-              key={index}
+              key={item.path}
               to={item.path}
               className={({ isActive }) =>
                 `flex items-center gap-4 rounded-2xl px-5 py-4 mb-3 transition-all duration-300 ${
@@ -89,15 +94,12 @@ export default function Sidebar() {
             </NavLink>
           );
         })}
-
       </div>
 
       {/* Bottom */}
-
       <div className="p-5 border-t border-white/10">
 
         <div className="rounded-2xl bg-gradient-to-r from-violet-600 to-blue-600 p-5 mb-5">
-
           <h3 className="font-bold text-lg">
             AI Assistant
           </h3>
@@ -105,19 +107,18 @@ export default function Sidebar() {
           <p className="text-sm mt-2 opacity-90">
             Complete today's roadmap and improve your ATS score.
           </p>
-
         </div>
 
-        <button className="w-full flex items-center justify-center gap-3 rounded-2xl bg-red-500/20 py-4 text-red-400 hover:bg-red-500 hover:text-white transition">
-
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="w-full flex items-center justify-center gap-3 rounded-2xl bg-red-500/20 py-4 text-red-400 hover:bg-red-500 hover:text-white transition"
+        >
           <LogOut size={20} />
-
           Logout
-
         </button>
 
       </div>
-
     </aside>
   );
 }

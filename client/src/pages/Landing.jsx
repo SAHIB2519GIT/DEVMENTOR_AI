@@ -7,20 +7,16 @@ import Footer from "../components/common/Footer";
 
 export default function Landing() {
   return (
-    <div className="bg-[#09090b] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#09090b] text-white overflow-x-hidden">
+      <Navbar />
 
-      <Navbar/>
-
-      <Hero/>
-
-      <Stats/>
-
-      <Features/>
-
-      <CTA/>
-
-      <Footer/>
-
+      <main className="pt-20">
+        <Hero />
+        <Stats />
+        <Features />
+        <CTA />
+        <Footer />
+      </main>
     </div>
   );
 }

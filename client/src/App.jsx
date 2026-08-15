@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import ResumeAnalyzer from "./pages/ResumeAnalyzer";
 import Interview from "./pages/Interview";
 import Roadmap from "./pages/Roadmap";
+import Progress from "./pages/Progress";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 
@@ -18,15 +19,15 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          {/* Public Routes */}
-
+          {/* Public Pages */}
           <Route path="/" element={<Landing />} />
 
           <Route path="/login" element={<Login />} />
 
           <Route path="/register" element={<Register />} />
 
-          {/* Protected Routes */}
+
+          {/* Protected Pages */}
 
           <Route
             path="/dashboard"
@@ -64,6 +65,16 @@ function App() {
             }
           />
 
+          {/* Learning Progress */}
+          <Route
+            path="/progress"
+            element={
+              <ProtectedRoute>
+                <Progress />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/profile"
             element={
@@ -82,13 +93,21 @@ function App() {
             }
           />
 
-          {/* 404 */}
 
+          {/* 404 */}
           <Route
             path="*"
             element={
-              <div className="min-h-screen bg-[#09090b] text-white flex items-center justify-center text-3xl font-bold">
-                404 | Page Not Found
+              <div className="min-h-screen w-full bg-[#07070a] text-white flex items-center justify-center">
+                <div className="text-center">
+                  <h1 className="text-5xl font-black">
+                    404
+                  </h1>
+
+                  <p className="mt-3 text-gray-400">
+                    Page Not Found
+                  </p>
+                </div>
               </div>
             }
           />

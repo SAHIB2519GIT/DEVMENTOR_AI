@@ -2,48 +2,56 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-xl border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#09090b]/90 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
+        {/* Logo */}
         <Link
           to="/"
-          className="text-2xl font-bold gradient-text"
+          className="text-xl font-bold text-white"
         >
-          DevMentor AI
+          DevMentor <span className="text-violet-400">AI</span>
         </Link>
 
-        <div className="hidden md:flex gap-8 text-gray-300">
-
-          <a href="#features" className="hover:text-white">
+        {/* Navigation */}
+        <div className="hidden md:flex items-center gap-8 text-sm text-gray-400">
+          <a
+            href="#features"
+            className="transition hover:text-white"
+          >
             Features
           </a>
 
-          <a href="#pricing" className="hover:text-white">
+          <a
+            href="#pricing"
+            className="transition hover:text-white"
+          >
             Pricing
           </a>
 
-          <a href="#about" className="hover:text-white">
+          <a
+            href="#about"
+            className="transition hover:text-white"
+          >
             About
           </a>
-
         </div>
 
-        <div className="flex gap-3">
+        {/* Actions */}
+        <div className="flex items-center gap-3">
 
-          <Link to="/login">
-            <button
-              className="px-5 py-2 rounded-xl border border-white/20 text-white hover:bg-white/10 transition"
-            >
-              Login
-            </button>
+          <Link
+            to="/login"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-gray-300 transition hover:bg-white/5 hover:text-white"
+          >
+            Login
           </Link>
 
-          <Link to="/register">
-            <button
-              className="px-5 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white transition"
-            >
-              Get Started
-            </button>
+          <Link
+            to="/register"
+            className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-500"
+          >
+            Get Started
           </Link>
 
         </div>

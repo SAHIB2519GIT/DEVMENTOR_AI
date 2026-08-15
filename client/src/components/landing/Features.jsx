@@ -1,132 +1,72 @@
-import { motion } from "framer-motion";
-import {
-  FileText,
-  Brain,
-  Target,
-  BarChart3,
-  Route,
-  ShieldCheck,
-} from "lucide-react";
-
 const features = [
   {
-    icon: FileText,
+    number: "01",
     title: "AI Resume Analysis",
     description:
-      "Upload your resume and instantly receive ATS score, strengths, weaknesses and personalized improvements.",
+      "Upload your resume and get an ATS score, skill gaps, and practical suggestions to improve it.",
   },
   {
-    icon: Brain,
-    title: "Interview Generator",
+    number: "02",
+    title: "Interview Preparation",
     description:
-      "Generate realistic interview questions with AI based on your role and technical skills.",
+      "Generate interview questions based on your target role and prepare for technical and behavioral rounds.",
   },
   {
-    icon: Route,
-    title: "Career Roadmap",
+    number: "03",
+    title: "Career Intelligence",
     description:
-      "Receive a personalized roadmap with technologies, projects and learning resources.",
-  },
-  {
-    icon: Target,
-    title: "Skill Gap Detection",
-    description:
-      "Know exactly which skills are missing for your dream company and role.",
-  },
-  {
-    icon: BarChart3,
-    title: "Progress Dashboard",
-    description:
-      "Track ATS score improvements, interview preparation and roadmap completion.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Industry Ready",
-    description:
-      "Prepare with industry-standard interview patterns used by top product companies.",
+      "Understand your current skills and discover what you should learn next for your target career.",
   },
 ];
 
 export default function Features() {
   return (
-    <section
-      id="features"
-      className="py-28 bg-[#0d1117]"
-    >
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="border-t border-white/5 bg-[#09090b] py-20">
+      <div className="mx-auto max-w-6xl px-6">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: .7 }}
-          className="text-center mb-20"
-        >
-
-          <span className="text-violet-400 uppercase tracking-widest font-semibold">
-            Features
-          </span>
-
-          <h2 className="text-5xl font-bold mt-5">
-
-            Everything You Need
-
-            <span className="gradient-text">
-              {" "}To Get Hired
-            </span>
-
-          </h2>
-
-          <p className="text-gray-400 text-lg mt-6 max-w-3xl mx-auto">
-
-            DevMentor AI combines resume analysis, AI interviews,
-            learning roadmaps and analytics into one powerful platform.
-
+        {/* Heading */}
+        <div className="max-w-2xl">
+          <p className="text-sm font-medium text-violet-400">
+            WHAT DEVMENТOR DOES
           </p>
 
-        </motion.div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Everything you need to move forward.
+          </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <p className="mt-4 text-base leading-7 text-zinc-500">
+            One workspace to understand your skills, improve your resume,
+            and prepare for your target career.
+          </p>
+        </div>
 
-          {features.map((feature, index) => {
+        {/* Features */}
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
 
-            const Icon = feature.icon;
+          {features.map((feature) => (
+            <div
+              key={feature.number}
+              className="border-t border-white/10 pt-5"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-violet-400">
+                  {feature.number}
+                </span>
 
-            return (
+                <span className="text-xs text-zinc-600">
+                  DevMentor AI
+                </span>
+              </div>
 
-              <motion.div
-                key={index}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                }}
-                transition={{ duration: .3 }}
-                className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:border-violet-500/50 duration-300"
-              >
+              <h3 className="mt-6 text-lg font-semibold text-white">
+                {feature.title}
+              </h3>
 
-                <div className="w-16 h-16 rounded-2xl bg-violet-600/20 flex items-center justify-center mb-8 group-hover:rotate-6 transition">
-
-                  <Icon className="w-8 h-8 text-violet-400" />
-
-                </div>
-
-                <h3 className="text-2xl font-bold mb-4">
-
-                  {feature.title}
-
-                </h3>
-
-                <p className="text-gray-400 leading-7">
-
-                  {feature.description}
-
-                </p>
-
-              </motion.div>
-
-            );
-
-          })}
+              <p className="mt-3 text-sm leading-6 text-zinc-500">
+                {feature.description}
+              </p>
+            </div>
+          ))}
 
         </div>
 

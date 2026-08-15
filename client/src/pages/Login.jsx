@@ -3,69 +3,120 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
+
+  // Get login function from AuthContext
   const { login } = useAuth();
 
+  // Used to move the user to another page
   const navigate = useNavigate();
 
+  // Store email and password entered by the user
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
 
+  // Runs when the login form is submitted
   async function handleSubmit(e) {
+
+    // Prevent page refresh
     e.preventDefault();
 
     try {
+
+      // Send email and password to backend
       await login(email, password);
 
+      // Login successful → go to dashboard
       navigate("/dashboard");
-    } catch (err) {
-      console.log(err);
+
+    } catch (error) {
+
+      // Show error in console
+      console.log(error);
+
       alert("Invalid Email or Password");
     }
   }
 
   return (
-    <div className="min-h-screen bg-[#09090b] flex justify-center items-center px-6">
+    <div className="min-h-screen bg-[#07070a] text-white flex items-center justify-center px-5">
 
+      {/* Login Form */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-10"
+        className="w-full max-w-md bg-white/5 border border-white/10 rounded-2xl p-8"
       >
-        <h1 className="text-4xl font-black text-white">
+
+        {/* Heading */}
+        <h1 className="text-3xl font-bold">
           Welcome Back
         </h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full mt-8 rounded-xl bg-black/30 p-4 text-white outline-none"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <p className="mt-2 text-gray-400">
+          Sign in to continue to DevMentor AI.
+        </p>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full mt-5 rounded-xl bg-black/30 p-4 text-white outline-none"
-          onChange={(e) => setPassword(e.target.value)}
-        />
 
+        {/* Email */}
+        <div className="mt-8">
+
+          <label className="block mb-2 text-sm text-gray-300">
+            Email
+          </label>
+
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            className="w-full h-12 rounded-lg border border-white/10 bg-black/30 px-4 text-white outline-none focus:border-violet-500"
+          />
+
+        </div>
+
+
+        {/* Password */}
+        <div className="mt-5">
+
+          <label className="block mb-2 text-sm text-gray-300">
+            Password
+          </label>
+
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            className="w-full h-12 rounded-lg border border-white/10 bg-black/30 px-4 text-white outline-none focus:border-violet-500"
+          />
+
+        </div>
+
+
+        {/* Login Button */}
         <button
-          className="w-full mt-8 rounded-xl bg-violet-600 hover:bg-violet-700 py-4 font-bold text-white"
+          type="submit"
+          className="w-full mt-7 h-12 rounded-lg bg-violet-600 hover:bg-violet-700 font-semibold"
         >
           Login
         </button>
 
-        <p className="mt-6 text-gray-400">
+
+        {/* Register Link */}
+        <p className="mt-6 text-center text-sm text-gray-400">
+
           Don't have an account?
 
           <Link
             to="/register"
-            className="ml-2 text-violet-400"
+            className="ml-2 text-violet-400 hover:text-violet-300"
           >
             Register
           </Link>
+
         </p>
+
       </form>
+
     </div>
   );
 }
