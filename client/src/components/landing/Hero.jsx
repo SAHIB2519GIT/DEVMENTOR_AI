@@ -11,7 +11,7 @@ export default function Hero() {
             AI-powered career intelligence
           </p>
 
-          <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             Build a career
             <span className="block text-violet-400">
               that gets noticed.
@@ -41,11 +41,6 @@ export default function Hero() {
 
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-500">
-            <span>✓ Resume analysis</span>
-            <span>✓ Interview preparation</span>
-            <span>✓ Career insights</span>
-          </div>
 
         </div>
 
