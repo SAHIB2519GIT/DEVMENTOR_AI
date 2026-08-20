@@ -79,22 +79,22 @@ TARGET JOB DESCRIPTION:
 ${jobDescription || "No specific job description provided."}
 `;
 
-  const completion = await client.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+const completion = await client.chat.completions.create({
+  model: "llama-3.1-8b-instant",
 
-    messages: [
-      {
-        role: "user",
-        content: prompt,
-      },
-    ],
-
-    temperature: 0.2,
-
-    response_format: {
-      type: "json_object",
+  messages: [
+    {
+      role: "user",
+      content: prompt,
     },
-  });
+  ],
+
+  temperature: 0.2,
+
+  response_format: {
+    type: "json_object",
+  },
+});
 
   const content = completion.choices[0].message.content;
 
